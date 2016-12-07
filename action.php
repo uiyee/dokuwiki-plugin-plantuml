@@ -21,14 +21,14 @@ class action_plugin_plantuml extends DokuWiki_Action_Plugin {
      */
     function register(Doku_Event_Handler $controller) {
       if($this->getConf('button_enabled') == '1')
-        $controller->register_hook('TOOLBAR_DEFINE', 'AFTER', $this, 'insert_button', array ());
+          $controller->register_hook('TOOLBAR_DEFINE', 'AFTER', $this, 'insert_button', array());
     }
  
     /**
      * Inserts the toolbar button
      */
-    function insert_button(& $event, $param) {
- 		$event->data[] = array (
+    function insert_button(Doku_Event $event, $param) {
+        $event->data[] = array(
             'type' => 'format',
             'title' => htmlspecialchars($this->getLang('tooltip')),
             'icon' => '../../plugins/plantuml/'.$this->getConf('button_icon'),
