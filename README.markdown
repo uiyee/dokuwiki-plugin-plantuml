@@ -19,6 +19,21 @@ Requirements (for local PlantUML installation):
 
 See [PlantUML Installation Notes](http://plantuml.sourceforge.net/faqinstall.html) for troubleshooting.
 
+Note that Java needs write access to the user DokuWiki is running as. It can be the user
+your webserver is running as. On some systems the home directory of such user is not writable
+by default. You can either fix the access or store Java settings elsewhere using plugin option
+`java_systemroot`.
+
+For example, set `java_systemroot` to `/home/java` and ensure the directory exists and
+is writable:
+
+    $ mkdir /home/java
+    $ chown www-data:www-data /home/java
+
+`www-data` is the user apache is running as on Debian systems, replace this with the user
+your DokuWiki is running as.
+
+
 # Remote Rendering
 
 The plugin can use PlantUML server to generate diagrams. So nothing is required to be installed on the server running DokuWiki.

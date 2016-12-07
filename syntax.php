@@ -216,6 +216,7 @@ class syntax_plugin_plantuml extends DokuWiki_Syntax_Plugin {
         }
         
         $java = $this->getConf('java');
+        $java_sysroot = $this->getConf('java_systemroot');
         $jar = $this->getConf('jar');
         $jar = realpath($jar);
         $jar = escapeshellarg($jar);
@@ -225,6 +226,14 @@ class syntax_plugin_plantuml extends DokuWiki_Syntax_Plugin {
         $command = $java;
         $command .= ' -Djava.awt.headless=true';
         $command .= ' -Dfile.encoding=UTF-8';
+
+        if ($java_sysroot) {
+            $command .= ' -Djava.util.prefs.systemRoot='.escapeshellarg($java_sysroot);
+
+            $user_prefs = rtrim($java_sysroot, '/').'/.userPrefs';
+            $command .= ' -Djava.util.prefs.userRoot='.escapeshellarg($user_prefs);
+        }
+
         $command .= " -jar $jar";
         $command .= ' -charset UTF-8';
         $command .= ' ' . escapeshellarg($in);

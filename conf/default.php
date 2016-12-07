@@ -2,6 +2,7 @@
 
 $conf['render_local']='0';
 $conf['java']='';
+$conf['java_systemroot']='';
 $conf['jar']='plantuml.jar';
 $conf['remote_url']='http://www.plantuml.com/plantuml/';
 $conf['button_enabled']='1';
