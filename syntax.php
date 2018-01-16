@@ -254,8 +254,8 @@ class syntax_plugin_plantuml extends DokuWiki_Syntax_Plugin {
      */
     function _log($text) {
         global $conf;
-        $hFile = fopen($conf['cachedir'].'/dokuwiki_plantuml.log', a);
-        if(hFile) {
+        $hFile = fopen($conf['cachedir'].'/dokuwiki_plantuml.log', 'a');
+        if($hFile) {
             fwrite($hFile, $text . "\r\n");
             fclose($hFile);
         }
