@@ -262,8 +262,7 @@ class syntax_plugin_plantuml extends DokuWiki_Syntax_Plugin {
     }
 
     function encodep($text) {
-        $data = utf8_encode($text);
-        $compressed = gzdeflate($data, 9);
+        $compressed = gzdeflate($text, 9);
         return $this->encode64($compressed);
     }
 
